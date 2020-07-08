@@ -11,7 +11,7 @@ RUN npm ci
 
 ADD . .
 
-RUN npm run build -- --configuration=$ENV --output-path=dist
+RUN npm run build -- --output-path=dist
 
 # STAGE 2: Run
 FROM nginx:1.17.2-alpine
