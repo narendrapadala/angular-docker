@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Run commands
+docker build -t asbp/sample-angular-app:version-1.0 --build-arg ENV=dev -f Dockerfile .
+docker ps -f name=docker-sample-angular-app -q | xargs --no-run-if-empty docker container stop
+docker container ls -a -fname=docker-sample-angular-app -q | xargs -r docker container rm
+docker run --expose=1012 -p 1012:80 -d --name docker-sample-angular-app asbp/sample-angular-app:version-1.0
